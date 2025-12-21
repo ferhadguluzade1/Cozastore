@@ -15,4 +15,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Shop\" />
+  </ItemGroup>
+
 </Project>
