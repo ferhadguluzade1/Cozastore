@@ -1,0 +1,13 @@
+﻿@model Cozastore.ViewModels.ProductDetailViewModel
+
+<h1>@Model.Product.Name</h1>
+<p>Price: @Model.Product.Price</p>
+<p>Category: @Model.Product.Category.Name</p>
+
+<h3>Related Products: </h3>
+<ul>
+    @foreach(var r in Model.RelatedProducts)
+    {
+        <li>@r.Name</li>
+    }
+</ul>

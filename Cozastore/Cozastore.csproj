@@ -7,6 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\About\**" />
+    <Compile Remove="Views\Blog\**" />
+    <Compile Remove="Views\Cart\**" />
+    <Compile Remove="Views\Contact\**" />
+    <Compile Remove="Views\Shop\**" />
+    <Content Remove="Views\About\**" />
+    <Content Remove="Views\Blog\**" />
+    <Content Remove="Views\Cart\**" />
+    <Content Remove="Views\Contact\**" />
+    <Content Remove="Views\Shop\**" />
+    <EmbeddedResource Remove="Views\About\**" />
+    <EmbeddedResource Remove="Views\Blog\**" />
+    <EmbeddedResource Remove="Views\Cart\**" />
+    <EmbeddedResource Remove="Views\Contact\**" />
+    <EmbeddedResource Remove="Views\Shop\**" />
+    <None Remove="Views\About\**" />
+    <None Remove="Views\Blog\**" />
+    <None Remove="Views\Cart\**" />
+    <None Remove="Views\Contact\**" />
+    <None Remove="Views\Shop\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
@@ -16,11 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Blog\" />
-    <Folder Include="Views\About\" />
-    <Folder Include="Views\Contact\" />
-    <Folder Include="Views\Cart\" />
-    <Folder Include="Views\Shop\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="wwwroot\admin\" />
+    <Folder Include="wwwroot\Uploads\Slider\" />
   </ItemGroup>
 
 </Project>
