@@ -1,4 +1,6 @@
-﻿namespace Cozastore.Models
+﻿using Cozastore.Models.Base;
+
+namespace Cozastore.Models
 {
     public class Category : BaseEntity
     {
