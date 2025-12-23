@@ -55,7 +55,7 @@ namespace Cozastore.Areas.Admin.Controllers
             if (id == null) return NotFound();
             Slider slider = _db.Sliders.FirstOrDefault(item => item.Id == id);
             if (slider == null) return NotFound();
-            slider.ImageUrl?.Delete(_env, "Uploads/Slider");
+            //slider.ImageUrl?.Delete(_env, "Uploads/Slider");
             _db.Sliders.RemoveRange();
             return RedirectToAction("Index");
 
@@ -63,7 +63,7 @@ namespace Cozastore.Areas.Admin.Controllers
 
         public IActionResult Update(int id)
         {
-            if (id == null) return NotFound();
+            //if (id == null) return NotFound();
             Slider slider = _db.Sliders.FirstOrDefault(item => item.Id == id);
             if (slider == null) return NotFound();
             return View(slider);
