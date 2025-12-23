@@ -1,14 +1,36 @@
 ﻿using Cozastore.Models.Base;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cozastore.Models
 {
     public class Slider : BaseEntity
     {
+        [Required(ErrorMessage = "Name is required")]
+        [
+            StringLength(50, ErrorMessage = "Maximum length must be 50"),
+            MinLength(3, ErrorMessage ="Minimum length must be 3")
+        ]
+
         public string Title { get; set; }
+        public string ImageUrl { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
         public string Subtitle { get; set; }
         public string ButtonText { get; set; }
         public string ButtonLink { get; set; }
-        public string ImageUrl { get; set; }
+        
         public int Order { get; set; }
+        [Required(ErrorMessage ="Description is required")]
+        [
+            StringLength(500,ErrorMessage = "Maximum length must be 500"),
+            MinLength(10, ErrorMessage ="Minimum length must be 10")
+        ]
+        public string Description { get; set; }
+        
+        [Required(ErrorMessage ="Discount rate is required")]
+        [Range(0,100, ErrorMessage = "Discount rate must be between 0 and 100")]
+        public int DiscountRate { get; set; }
     }
 }

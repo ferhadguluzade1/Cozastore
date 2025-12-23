@@ -10,14 +10,14 @@ namespace Cozastore.Areas.Admin.Controllers
     {
         private readonly CozastoreDB _db;
         private readonly IWebHostEnvironment _env;
-        
+
         public SliderController(CozastoreDB context, IWebHostEnvironment env)
         {
             _db = context;
             _env = env;
         }
-        
-        
+
+
         public IActionResult Index()
         {
             List<Slider> sliders = _db.Sliders.ToList();
@@ -55,8 +55,8 @@ namespace Cozastore.Areas.Admin.Controllers
             if (id == null) return NotFound();
             Slider slider = _db.Sliders.FirstOrDefault(item => item.Id == id);
             if (slider == null) return NotFound();
-            //slider.Image?.DeleteImage(_env, "Uploads/Slider");
-            //_db.Sliders.Remove();
+            slider.ImageUrl?.Delete(_env, "Uploads/Slider");
+            _db.Sliders.RemoveRange();
             return RedirectToAction("Index");
 
         }
@@ -77,10 +77,10 @@ namespace Cozastore.Areas.Admin.Controllers
             Slider oldSlider = _db.Sliders.FirstOrDefault(item => item.Id == newSlider.Id);
             if (oldSlider == null) return NotFound();
 
-            //oldSlider.Name = newSlider.Name;
-            //oldSlider.Description = newSlider.Description;
-            //oldSlider.Image = newSlider.Image;
-            //oldSlider.DiscountRate = newSlider.DiscountRate;
+            oldSlider.Title = newSlider.Title;
+            oldSlider.Description = newSlider.Description;
+            oldSlider.ImageUrl = newSlider.ImageUrl;
+            oldSlider.DiscountRate = newSlider.DiscountRate;
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
