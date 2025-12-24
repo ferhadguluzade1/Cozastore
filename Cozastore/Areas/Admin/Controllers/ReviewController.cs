@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Cozastore.ViewModels.ReviewViewModel;
+using Cozastore.Areas.Admin.ViewModels.Review;
 using Cozastore.DAL;
 using Cozastore.Models;
 
@@ -10,7 +10,7 @@ namespace Cozastore.Areas.Admin.Controllers
     public class ReviewController : Controller
     {
         CozastoreDB _db;
-        public ReviewController(Cozastore db)
+        public ReviewController(CozastoreDB db)
         {
             _db = db;
         }
@@ -39,7 +39,7 @@ namespace Cozastore.Areas.Admin.Controllers
             Review review = new Review
             {
                 Comment = reviewViewModel.Comment,
-                ProductsId = reviewViewModel.ProductId
+                ProductId = reviewViewModel.ProductId
             };
 
             await _db.Reviews.AddAsync(review);
@@ -51,7 +51,7 @@ namespace Cozastore.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return View("Error");
-            var review = await _db.Reviews.FirstOrDefault(r => r.Id == id);
+            var review = await _db.Reviews.FirstOrDefaultAsync(r => r.Id == id);
             if (review == null) return View("Error");
             review.IsDeleted = true;
             await _db.SaveChangesAsync();
@@ -62,10 +62,10 @@ namespace Cozastore.Areas.Admin.Controllers
         public async Task<IActionResult> Restore(int? id)
         {
             if (id == null) return View("Error");
-            var review = await _db.Reviews.FirstOrDefaultAsync(r => r.Id = id);
-            if (review == null) review View("Error);
+            var review = await _db.Reviews.FirstOrDefaultAsync(r => r.Id == id);
+            if (review == null) return View("Error");
             review.IsDeleted = false;
-            await _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -101,13 +101,5 @@ namespace Cozastore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         
         }
-
-
-       
-
-
     }
-
-
-
 }
